@@ -9,7 +9,7 @@
  */
 int isinteger(const char *str)
 {
-	if (*str == '-')
+	if (*str == '-' || *str == '+')
 		++str;
 
 	if (!*str)
@@ -17,5 +17,6 @@ int isinteger(const char *str)
 
 	while (isdigit(*str))
 		++str;
+
 	return (!*str);
 }

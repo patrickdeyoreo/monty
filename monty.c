@@ -16,7 +16,7 @@ int main(int ac, char **av)
 	ssize_t n_read = 0;
 
 	if (ac != 2)
-		failure("USAGE: %s file\n", __FILE__);
+		failure("USAGE: monty file\n");
 
 	if (!freopen(av[1], "r", stdin))
 		failure("Error: Can't open file %s\n", av[1]);
