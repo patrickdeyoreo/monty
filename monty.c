@@ -1,6 +1,6 @@
 #include "monty.h"
 
-op_env_t op_env = {0};
+op_env_t op_env = {NULL, NULL, 1, LIFO};
 
 /**
  * main - entry point
