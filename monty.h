@@ -71,6 +71,7 @@ extern op_env_t op_env;
 
 instruction_fn get_instruction_fn(const char *opcode);
 
+void add(stack_t **sp, unsigned int lineno);
 void pall(stack_t **sp, unsigned int lineno);
 void pint(stack_t **sp, unsigned int lineno);
 void pop(stack_t **sp, unsigned int lineno);

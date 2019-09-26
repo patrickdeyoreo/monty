@@ -7,10 +7,16 @@
  */
 void swap(stack_t **sp, unsigned int lineno)
 {
-	if (!(*sp && (*sp)->prev != (*sp)->next))
+	stack_t *a = NULL;
+	stack_t *b = NULL;
+
+	if (!(*sp && *sp != (*sp)->next))
 		failure("L%u: can't swap, stack too short\n", lineno);
 
-	(*sp)->n ^= (*sp)->prev->n;
-	(*sp)->prev->n ^= (*sp)->n;
-	(*sp)->n ^= (*sp)->prev->n;
+	a = (*sp);
+	b = (*sp)->prev;
+
+	a->n ^= b->n;
+	b->n ^= a->n;
+	a->n ^= b->n;
 }

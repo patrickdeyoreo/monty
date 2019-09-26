@@ -1,5 +1,4 @@
 #include "monty.h"
-#include <stdio.h>
 #include <string.h>
 
 /**
@@ -12,6 +11,7 @@
 instruction_fn get_instruction_fn(const char *opcode)
 {
 	static instruction_t instructions[] = {
+		{"add",  add},
 		{"pall", pall},
 		{"pint", pint},
 		{"pop",  pop},
