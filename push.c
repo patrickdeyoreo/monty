@@ -4,14 +4,14 @@
 /**
  * push - push an element onto the stack
  * @sp: stack pointer
- * @ln: line number
+ * @lineno: line number
  */
-void push(stack_t **sp, unsigned int ln)
+void push(stack_t **sp, unsigned int lineno)
 {
 	stack_t *new = NULL;
 
 	if (!(op_env.av[1] && isinteger(op_env.av[1])))
-		failure("L%u: usage: push integer\n", ln);
+		failure("L%u: usage: push integer\n", lineno);
 
 	new = malloc(sizeof(stack_t));
 	if (!new)

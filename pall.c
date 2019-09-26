@@ -5,11 +5,11 @@
 /**
  * pall - print each element on the stack
  * @sp: stack pointer
- * @ln: line number
+ * @lineno: line number
  */
-void pall(stack_t **sp, unsigned int ln __attribute__((unused)))
+void pall(stack_t **sp, unsigned int lineno __attribute__((unused)))
 {
-	stack_t *ptr = NULL, *tmp = NULL;
+	stack_t *p = NULL, *tmp = NULL;
 
 	if (*sp)
 	{
@@ -19,8 +19,8 @@ void pall(stack_t **sp, unsigned int ln __attribute__((unused)))
 			tmp = (*sp)->next->prev;
 			(*sp)->next->prev = NULL;
 
-			for (ptr = tmp; ptr; ptr = ptr->prev)
-				fprintf(stdout, "%d\n", ptr->n);
+			for (p = tmp; p; p = p->prev)
+				fprintf(stdout, "%d\n", p->n);
 
 			(*sp)->next->prev = tmp;
 			break;
@@ -29,8 +29,8 @@ void pall(stack_t **sp, unsigned int ln __attribute__((unused)))
 			tmp = (*sp)->next;
 			(*sp)->next = NULL;
 
-			for (ptr = tmp; ptr; ptr = ptr->next)
-				fprintf(stdout, "%d\n", ptr->n);
+			for (p = tmp; p; p = p->next)
+				fprintf(stdout, "%d\n", p->n);
 
 			(*sp)->next = tmp;
 			break;

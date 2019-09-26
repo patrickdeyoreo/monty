@@ -26,7 +26,7 @@ instruction_fn get_instruction_fn(const char *opcode)
 				return (op->f);
 			++op;
 		}
-		failure("L%u: unknown instruction %s\n", op_env.ln, opcode);
+		failure("L%u: unknown instruction %s\n", op_env.lineno, opcode);
 	}
 	return (NULL);
 }

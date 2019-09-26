@@ -53,15 +53,19 @@ typedef enum stack_mode_n
 /**
  * struct op_env_s - operation environment
  * @av: NULL-terminated argument vector
- * @ln: input file line number
  * @sp: stack pointer
+ * @line: line buffer
+ * @linesz: line size
+ * @lineno: line number
  * @mode: stack operation mode
  */
 typedef struct op_env_s
 {
-	stack_t *sp;
 	char **av;
-	unsigned int ln;
+	stack_t *sp;
+	char *line;
+	size_t linesz;
+	unsigned int lineno;
 	stack_mode_t mode;
 } op_env_t;
 
@@ -69,14 +73,12 @@ extern op_env_t op_env;
 
 instruction_fn get_instruction_fn(const char *opcode);
 
-void pall(stack_t **sp, unsigned int ln);
-void push(stack_t **sp, unsigned int ln);
-
-void clear_op_env(void);
-
-void free_on_exit(int status, void *ref);
+void pall(stack_t **sp, unsigned int lineno);
+void push(stack_t **sp, unsigned int lineno);
 
 void free_stack(stack_t **sp);
+
+void clear_op_env(void);
 
 void failure(const char *fmt, ...);
 
