@@ -77,9 +77,15 @@ void op_mod(stack_t **sp, unsigned int lineno);
 void op_mul(stack_t **sp, unsigned int lineno);
 void op_nop(stack_t **sp, unsigned int lineno);
 void op_pall(stack_t **sp, unsigned int lineno);
+void op_pchar(stack_t **sp, unsigned int lineno);
 void op_pint(stack_t **sp, unsigned int lineno);
 void op_pop(stack_t **sp, unsigned int lineno);
+void op_pstr(stack_t **sp, unsigned int lineno);
 void op_push(stack_t **sp, unsigned int lineno);
+void op_queue(stack_t **sp, unsigned int lineno);
+void op_rotl(stack_t **sp, unsigned int lineno);
+void op_rotr(stack_t **sp, unsigned int lineno);
+void op_stack(stack_t **sp, unsigned int lineno);
 void op_sub(stack_t **sp, unsigned int lineno);
 void op_swap(stack_t **sp, unsigned int lineno);
 

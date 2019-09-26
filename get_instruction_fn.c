@@ -20,6 +20,10 @@ instruction_fn get_instruction_fn(const char *opcode)
 		{"pint", op_pint},
 		{"pop",  op_pop},
 		{"push", op_push},
+		{"queue",op_queue},
+		{"rotl", op_rotl},
+		{"rotr", op_rotr},
+		{"stack",op_stack},
 		{"sub",  op_sub},
 		{"swap", op_swap},
 		{0}
