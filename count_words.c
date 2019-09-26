@@ -4,6 +4,7 @@
 /**
  * count_words - count the words in a string
  * @str: the string to evaluate
+ *
  * Return: If str is NULL, return -1.
  * Otherwise, return the number of words in str.
  */

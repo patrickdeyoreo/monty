@@ -2,7 +2,7 @@
 
 /**
  * free_words - free and nullify an array of words
- * @words: a pointer to an array of words
+ * @words: NULL-terminated array of words
  */
 void free_words(char ***words)
 {

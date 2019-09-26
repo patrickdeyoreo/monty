@@ -2,13 +2,20 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-void failure(const char *format, ...)
+/**
+ * failure - print an error message and exit
+ * @fmt: format string
+ * @...: format string parameters
+ *
+ * Description: Print a message on stderr and exit with status EXIT_FAILURE.
+ */
+void failure(const char *fmt, ...)
 {
 	va_list args;
 
-	va_start(args, format);
+	va_start(args, fmt);
 
-	vfprintf(stderr, format, args);
+	vfprintf(stderr, fmt, args);
 
 	va_end(args);
 

@@ -5,6 +5,7 @@
 /**
  * strtow - split a string into words
  * @str: the string to strtow
+ *
  * Return: If memory allocation fails, or if str is NULL or contains no words,
  * return NULL. Otherwise, return a NULL-terminated array of the words in str.
  */

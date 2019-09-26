@@ -4,9 +4,15 @@
 
 op_env_t op_env = {0};
 
+/**
+ * main - entry point
+ * @ac: argument count
+ * @av: argument values
+ *
+ * Return: Upon success, return EXIT_SUCCESS.
+ */
 int main(int ac, char **av)
 {
-	/*FILE *f_in = NULL;*/
 	char *lnbuf = NULL;
 	size_t lnbufsz = 0;
 	ssize_t n_read = 0;
@@ -30,9 +36,8 @@ int main(int ac, char **av)
 		}
 		++op_env.ln;
 	}
-
 	if (n_read < 0)
 		failure("Error: Can't read file %s\n", av[1]);
 
-	exit(EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }

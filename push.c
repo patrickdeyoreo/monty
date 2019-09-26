@@ -1,6 +1,11 @@
 #include "monty.h"
 #include <stdio.h>
 
+/**
+ * push - push an element onto the stack
+ * @sp: stack pointer
+ * @ln: line number
+ */
 void push(stack_t **sp, unsigned int ln)
 {
 	stack_t *new = NULL;

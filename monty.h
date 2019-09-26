@@ -14,9 +14,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 typedef void (*instruction_fn)(stack_t **, unsigned int);
@@ -31,8 +31,8 @@ typedef void (*instruction_fn)(stack_t **, unsigned int);
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        instruction_fn f;
+	char *opcode;
+	instruction_fn f;
 } instruction_t;
 
 /**

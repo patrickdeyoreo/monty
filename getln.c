@@ -6,7 +6,6 @@
 
 /**
  * getln - get a single line of input
- *
  * @line_p: pointer to the line_p buffer
  * @size_p: pointer to the size_p of *line_p
  * @fd: file descriptor to read from

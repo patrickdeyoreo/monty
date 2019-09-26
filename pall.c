@@ -1,6 +1,12 @@
 #include "monty.h"
 #include <stdio.h>
 
+
+/**
+ * pall - print each element on the stack
+ * @sp: stack pointer
+ * @ln: line number
+ */
 void pall(stack_t **sp, unsigned int ln __attribute__((unused)))
 {
 	stack_t *ptr = NULL, *tmp = NULL;
