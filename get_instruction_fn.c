@@ -12,6 +12,7 @@ instruction_fn get_instruction_fn(const char *opcode)
 {
 	static instruction_t instructions[] = {
 		{"add",  add},
+		{"nop",  nop},
 		{"pall", pall},
 		{"pint", pint},
 		{"pop",  pop},
