@@ -52,16 +52,16 @@ typedef enum stack_mode_n
 
 /**
  * struct op_env_s - operation environment
- * @av: NULL-terminated argument vector
- * @sp: stack pointer
+ * @argv: argument vector
+ * @stack: top of stack
  * @line: line buffer
  * @linesz: line size
- * @mode: stack operation mode
+ * @mode: stack mode
  */
 typedef struct op_env_s
 {
-	char **av;
-	stack_t *sp;
+	char **argv;
+	stack_t *stack;
 	char *line;
 	size_t linesz;
 	stack_mode_t mode;
