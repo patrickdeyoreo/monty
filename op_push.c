@@ -1,11 +1,11 @@
 #include "monty.h"
 
 /**
- * push - push an element onto the stack
+ * op_push - push an element onto the stack
  * @sp: stack pointer
  * @lineno: line number
  */
-void push(stack_t **sp, unsigned int lineno)
+void op_push(stack_t **sp, unsigned int lineno)
 {
 	stack_t *new = NULL;
 

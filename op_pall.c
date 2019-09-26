@@ -1,11 +1,11 @@
 #include "monty.h"
 
 /**
- * pall - print each element on the stack
+ * op_pall - print each element on the stack
  * @sp: stack pointer
  * @lineno: line number
  */
-void pall(stack_t **sp, unsigned int lineno __attribute__((unused)))
+void op_pall(stack_t **sp, unsigned int lineno __attribute__((unused)))
 {
 	stack_t *p = NULL, *tmp = NULL;
 

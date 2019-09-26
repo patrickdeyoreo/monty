@@ -71,13 +71,17 @@ extern op_env_t op_env;
 
 instruction_fn get_instruction_fn(const char *opcode);
 
-void add(stack_t **sp, unsigned int lineno);
-void nop(stack_t **sp, unsigned int lineno);
-void pall(stack_t **sp, unsigned int lineno);
-void pint(stack_t **sp, unsigned int lineno);
-void pop(stack_t **sp, unsigned int lineno);
-void push(stack_t **sp, unsigned int lineno);
-void swap(stack_t **sp, unsigned int lineno);
+void op_add(stack_t **sp, unsigned int lineno);
+void op_div(stack_t **sp, unsigned int lineno);
+void op_mod(stack_t **sp, unsigned int lineno);
+void op_mul(stack_t **sp, unsigned int lineno);
+void op_nop(stack_t **sp, unsigned int lineno);
+void op_pall(stack_t **sp, unsigned int lineno);
+void op_pint(stack_t **sp, unsigned int lineno);
+void op_pop(stack_t **sp, unsigned int lineno);
+void op_push(stack_t **sp, unsigned int lineno);
+void op_sub(stack_t **sp, unsigned int lineno);
+void op_swap(stack_t **sp, unsigned int lineno);
 
 void free_stack(stack_t **sp);
 

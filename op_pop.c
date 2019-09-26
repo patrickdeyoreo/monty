@@ -1,11 +1,11 @@
 #include "monty.h"
 
 /**
- * pop - remove the element at the top of the stack
+ * op_pop - remove the element at the top of the stack
  * @sp: stack pointer
  * @lineno: line number
  */
-void pop(stack_t **sp, unsigned int lineno)
+void op_pop(stack_t **sp, unsigned int lineno)
 {
 	stack_t *tmp = NULL;
 

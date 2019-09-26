@@ -1,11 +1,11 @@
 #include "monty.h"
 
 /**
- * add - add the top two elements on the stack
+ * op_add - add the top two elements on the stack
  * @sp: stack pointer
  * @lineno: line number
  */
-void add(stack_t **sp, unsigned int lineno)
+void op_add(stack_t **sp, unsigned int lineno)
 {
 	int to_add = 0;
 
@@ -14,7 +14,7 @@ void add(stack_t **sp, unsigned int lineno)
 
 	to_add = (*sp)->n;
 
-	pop(sp, lineno);
+	op_pop(sp, lineno);
 
 	(*sp)->n += to_add;
 }
