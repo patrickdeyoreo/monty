@@ -75,6 +75,7 @@ void pall(stack_t **sp, unsigned int lineno);
 void pint(stack_t **sp, unsigned int lineno);
 void pop(stack_t **sp, unsigned int lineno);
 void push(stack_t **sp, unsigned int lineno);
+void swap(stack_t **sp, unsigned int lineno);
 
 void free_stack(stack_t **sp);
 

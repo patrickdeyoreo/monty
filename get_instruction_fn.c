@@ -16,6 +16,7 @@ instruction_fn get_instruction_fn(const char *opcode)
 		{"pint", pint},
 		{"pop",  pop},
 		{"push", push},
+		{"swap", swap},
 		{0}
 	};
 	instruction_t *op = instructions;
