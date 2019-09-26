@@ -14,6 +14,7 @@ instruction_fn get_instruction_fn(const char *opcode)
 	static instruction_t instructions[] = {
 		{"pall", pall},
 		{"push", push},
+		{"pint", pint},
 		{0}
 	};
 	instruction_t *op = instructions;
@@ -26,7 +27,6 @@ instruction_fn get_instruction_fn(const char *opcode)
 				return (op->f);
 			++op;
 		}
-		failure("L%u: unknown instruction %s\n", op_env.lineno, opcode);
 	}
 	return (NULL);
 }

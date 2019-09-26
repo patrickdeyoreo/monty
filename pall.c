@@ -20,7 +20,7 @@ void pall(stack_t **sp, unsigned int lineno __attribute__((unused)))
 			(*sp)->next->prev = NULL;
 
 			for (p = tmp; p; p = p->prev)
-				fprintf(stdout, "%d\n", p->n);
+				printf("%d\n", p->n);
 
 			(*sp)->next->prev = tmp;
 			break;
@@ -30,7 +30,7 @@ void pall(stack_t **sp, unsigned int lineno __attribute__((unused)))
 			(*sp)->next = NULL;
 
 			for (p = tmp; p; p = p->next)
-				fprintf(stdout, "%d\n", p->n);
+				printf("%d\n", p->n);
 
 			(*sp)->next = tmp;
 			break;

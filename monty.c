@@ -1,6 +1,6 @@
 #include "monty.h"
 
-op_env_t op_env = {NULL, NULL, NULL, 0, 1, LIFO};
+op_env_t op_env = {0};
 
 /**
  * main - entry point
@@ -11,7 +11,9 @@ op_env_t op_env = {NULL, NULL, NULL, 0, 1, LIFO};
  */
 int main(int ac, char **av)
 {
+	instruction_fn fn = NULL;
 	ssize_t n_read = 0;
+	unsigned int lineno = 1;
 
 	if (ac != 2)
 		failure("USAGE: monty file\n");
@@ -26,10 +28,16 @@ int main(int ac, char **av)
 		op_env.av = strtow(op_env.line);
 		if (op_env.av && *op_env.av)
 		{
-			get_instruction_fn(*op_env.av)(&op_env.sp, op_env.lineno);
+			fn = get_instruction_fn(*op_env.av);
+			if (!fn)
+			{
+				failure("L%u: unknown instruction %s\n",
+					lineno, *op_env.av);
+			}
+			fn(&op_env.sp, lineno);
 			free_words(&op_env.av);
 		}
-		++op_env.lineno;
+		++lineno;
 	}
 	if (n_read < 0)
 		failure("Error: Can't read file %s\n", av[1]);
