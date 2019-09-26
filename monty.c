@@ -1,6 +1,4 @@
 #include "monty.h"
-#include "getln.h"
-#include "words.h"
 
 op_env_t op_env = {0};
 

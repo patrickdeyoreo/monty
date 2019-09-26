@@ -28,4 +28,6 @@ ssize_t fgetln(char **line_p, size_t *size_p, FILE *stream);
 ssize_t _getln_next(buf_t *buf, ssize_t *len, char **line_p, size_t *size_p);
 ssize_t _getln_full(buf_t *buf, ssize_t *len, char **line_p, size_t *size_p);
 
+void *_realloc(void *ptr, size_t old_size, size_t new_size);
+
 #endif /* GETLN_H */

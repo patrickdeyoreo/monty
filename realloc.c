@@ -1,5 +1,4 @@
-#include "alloc.h"
-
+#include "getln.h"
 #include <string.h>
 
 /**

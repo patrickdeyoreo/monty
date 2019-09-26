@@ -1,6 +1,4 @@
 #include "getln.h"
-#include "alloc.h"
-
 #include <string.h>
 #include <unistd.h>
 
