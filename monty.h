@@ -1,9 +1,7 @@
 #ifndef MONTY_H
 #define MONTY_H
 
-#include <stdio.h>
 #include <stdlib.h>
-
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -21,6 +19,7 @@ typedef struct stack_s
         struct stack_s *next;
 } stack_t;
 
+typedef void (*instruction_fn)(stack_t **, unsigned int);
 
 /**
  * struct instruction_s - opcode and its function
@@ -33,9 +32,50 @@ typedef struct stack_s
 typedef struct instruction_s
 {
         char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+        instruction_fn f;
 } instruction_t;
 
+/**
+ * enum stack_mode_n - stack mode enumeration
+ * @LIFO: operate as a stack
+ * @FIFO: operate as a queue
+ */
+typedef enum stack_mode_n
+{
+	LIFO = 0,
+	FIFO = 1
+} stack_mode_t;
 
+/**
+ * struct op_env_s - operation environment
+ * @av: NULL-terminated argument vector
+ * @ln: input file line number
+ * @sp: stack pointer
+ * @mode: stack operation mode
+ */
+typedef struct op_env_s
+{
+	stack_t *sp;
+	char **av;
+	unsigned int ln;
+	stack_mode_t mode;
+} op_env_t;
+
+extern op_env_t op_env;
+
+instruction_fn get_instruction_fn(const char *opcode);
+
+void pall(stack_t **sp, unsigned int ln);
+void push(stack_t **sp, unsigned int ln);
+
+void clear_op_env(void);
+
+void free_on_exit(int status, void *ref);
+
+void free_stack(stack_t **sp);
+
+void failure(const char *fmt, ...);
+
+int isinteger(const char *str);
 
 #endif /* MONTY_H */
