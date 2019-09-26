@@ -7,5 +7,6 @@
  */
 void op_rotr(stack_t **sp, unsigned int lineno __attribute__((unused)))
 {
-	*sp = (*sp)->next;
+	if (*sp)
+		*sp = (*sp)->next;
 }
