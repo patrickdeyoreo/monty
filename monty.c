@@ -26,7 +26,7 @@ int main(int ac, char **av)
 	while ((n_read = fgetln(&op_env.line, &op_env.linesz, stdin)))
 	{
 		op_env.av = strtow(op_env.line);
-		if (op_env.av && *op_env.av)
+		if (op_env.av && *op_env.av && **op_env.av != '#')
 		{
 			fn = get_instruction_fn(*op_env.av);
 			if (!fn)
