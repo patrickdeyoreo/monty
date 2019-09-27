@@ -11,21 +11,21 @@
 instruction_fn get_instruction_fn(const char *opcode)
 {
 	static instruction_t instructions[] = {
-		{"add",  op_add},
-		{"div",  op_div},
-		{"mod",  op_mod},
-		{"mul",  op_mul},
-		{"nop",  op_nop},
-		{"pall", op_pall},
-		{"pint", op_pint},
-		{"pop",  op_pop},
-		{"push", op_push},
-		{"queue",op_queue},
-		{"rotl", op_rotl},
-		{"rotr", op_rotr},
-		{"stack",op_stack},
-		{"sub",  op_sub},
-		{"swap", op_swap},
+		{"add",   op_add},
+		{"div",   op_div},
+		{"mod",   op_mod},
+		{"mul",   op_mul},
+		{"nop",   op_nop},
+		{"pall",  op_pall},
+		{"pint",  op_pint},
+		{"pop",   op_pop},
+		{"push",  op_push},
+		{"queue", op_queue},
+		{"rotl",  op_rotl},
+		{"rotr",  op_rotr},
+		{"stack", op_stack},
+		{"sub",   op_sub},
+		{"swap",  op_swap},
 		{0}
 	};
 	instruction_t *op = instructions;
