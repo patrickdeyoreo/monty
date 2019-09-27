@@ -7,18 +7,18 @@
  */
 void op_pop(stack_t **sp, unsigned int lineno)
 {
-	stack_t *tmp = NULL;
+	stack_t *top = NULL;
 
 	if (!*sp)
 		failure("L%u: can't pop an empty stack\n", lineno);
 
 	if (*sp != (*sp)->prev)
 	{
-		tmp = (*sp)->prev;
-		(*sp)->next->prev = tmp;
-		tmp->next = (*sp)->next;
+		top = (*sp)->prev;
+		(*sp)->next->prev = top;
+		top->next = (*sp)->next;
 	}
 	free(*sp);
-	*sp = tmp;
+	*sp = top;
 }
 

@@ -13,7 +13,7 @@ void op_push(stack_t **sp, unsigned int lineno)
 	if (!(nstr && isinteger(nstr)))
 		failure("L%u: usage: push integer\n", lineno);
 
-	new = malloc(sizeof(stack_t));
+	new = malloc(sizeof(*new));
 	if (!new)
 		failure("Error: malloc failed\n");
 
@@ -22,7 +22,7 @@ void op_push(stack_t **sp, unsigned int lineno)
 	{
 		new->prev = (*sp);
 		new->next = (*sp)->next;
-		(*sp)->next->prev = new;
+		new->next->prev = new;
 		(*sp)->next = new;
 		if (op_env.mode == LIFO)
 			(*sp) = new;
