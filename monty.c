@@ -12,8 +12,10 @@ op_env_t op_env = {NULL, NULL, NULL, 0, LIFO};
 int main(int argc, char **argv)
 {
 	instruction_fn fn = NULL;
-	ssize_t n_read = 0;
+	ssize_t len = 0;
 	unsigned int lineno = 1;
+
+	atexit(free_op_env);
 
 	if (argc != 2)
 		failure("USAGE: monty file\n");
@@ -21,9 +23,7 @@ int main(int argc, char **argv)
 	if (!freopen(argv[1], "r", stdin))
 		failure("Error: Can't open file %s\n", argv[1]);
 
-	atexit(clear_op_env);
-
-	while ((n_read = fgetln(&op_env.line, &op_env.linesz, stdin)) > 0)
+	while ((len = fgetln(&op_env.line, &op_env.linesz, stdin)) > 0)
 	{
 		op_env.argv = strtow(op_env.line);
 		if (op_env.argv && *op_env.argv && **op_env.argv != '#')
@@ -39,7 +39,7 @@ int main(int argc, char **argv)
 		++lineno;
 	}
 
-	if (n_read < 0)
+	if (len < 0)
 		failure("Error: Can't read file %s\n", argv[1]);
 
 	exit(EXIT_SUCCESS);

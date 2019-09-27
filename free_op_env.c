@@ -1,9 +1,9 @@
 #include "monty.h"
 
 /**
- * clear_op_env - clear stack operation environment
+ * free_op_env - clear stack operation environment
  */
-void clear_op_env(void)
+void free_op_env(void)
 {
 	free_words(&op_env.argv);
 	free_stack(&op_env.stack);

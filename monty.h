@@ -91,7 +91,7 @@ void op_swap(stack_t **sp, unsigned int lineno);
 
 void free_stack(stack_t **sp);
 
-void clear_op_env(void);
+void free_op_env(void);
 
 void failure(const char *fmt, ...);
 
