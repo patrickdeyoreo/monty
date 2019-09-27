@@ -26,14 +26,14 @@ char **strtow(const char *str)
 	if (!words)
 		return (NULL);
 
-	count = 0;
-	while (*str)
+	for (count = 0; *str; ++count)
 	{
 		while (isspace(*str))
 			++str;
-		if (!*str)
+		if (*str)
+			word = str;
+		else
 			break;
-		word = str;
 		do {
 			++str;
 		} while (*str && !isspace(*str));
@@ -46,7 +46,6 @@ char **strtow(const char *str)
 		}
 		memcpy(words[count], word, str - word);
 		words[count][str - word] = '\0';
-		++count;
 	}
 	words[count] = NULL;
 
