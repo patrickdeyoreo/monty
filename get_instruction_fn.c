@@ -2,7 +2,7 @@
 #include <string.h>
 
 /**
- * get_instruction_fn - get the function associated with an opcode
+ * do_instruction - get the function associated with an opcode
  * @opcode: the opcode to match
  *
  * Return: If opcode is NULL, return NULL. If match is found, return the
@@ -37,9 +37,10 @@ instruction_fn get_instruction_fn(const char *opcode)
 		while (op->opcode)
 		{
 			if (!strcmp(opcode, op->opcode))
-				return (op->f);
+				return (op->fn);
 			++op;
 		}
+		pfailure("L%u: unknown instruction %s\n", op_env.lineno, opcode);
 	}
 	return (NULL);
 }

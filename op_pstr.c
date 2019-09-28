@@ -3,9 +3,8 @@
 /**
  * op_pstr - print the string starting from the top of the stack
  * @sp: stack pointer
- * @lineno: line number
  */
-void op_pstr(stack_t **sp, unsigned int lineno __attribute__((unused)))
+void op_pstr(stack_t **sp)
 {
 	stack_t *p = NULL;
 

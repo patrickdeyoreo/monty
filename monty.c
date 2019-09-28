@@ -1,6 +1,6 @@
 #include "monty.h"
 
-op_env_t op_env = {NULL, NULL, NULL, 0, LIFO};
+op_env_t op_env = {NULL, NULL, NULL, 0, 1, LIFO};
 
 /**
  * main - entry point
@@ -11,36 +11,26 @@ op_env_t op_env = {NULL, NULL, NULL, 0, LIFO};
  */
 int main(int argc, char **argv)
 {
-	instruction_fn fn = NULL;
-	ssize_t len = 0;
-	unsigned int lineno = 1;
+	ssize_t n_read = 0;
+
+	if (argc != 2)
+		pfailure("USAGE: monty file\n");
+
+	if (!freopen(argv[1], "r", stdin))
+		pfailure("Error: Can't open file %s\n", argv[1]);
 
 	atexit(free_op_env);
 
-	if (argc != 2)
-		failure("USAGE: monty file\n");
-
-	if (!freopen(argv[1], "r", stdin))
-		failure("Error: Can't open file %s\n", argv[1]);
-
-	while ((len = fgetln(&op_env.line, &op_env.linesz, stdin)) > 0)
+	while ((n_read = getline(&op_env.line, &op_env.linesz, stdin)) > 0)
 	{
-		op_env.argv = strtow(op_env.line);
-		if (op_env.argv && *op_env.argv && **op_env.argv != '#')
-		{
-			fn = get_instruction_fn(*op_env.argv);
-			if (fn)
-				fn(&op_env.stack, lineno);
-			else
-				failure("L%u: unknown instruction %s\n",
-					lineno, *op_env.argv);
-		}
-		free_words(&op_env.argv);
-		++lineno;
+		op_env.argv = tokenize(op_env.line);
+
+		if (op_env.argv && **op_env.argv != '#')
+			get_instruction_fn(*op_env.argv)(&op_env.sp);
+
+		free(op_env.argv);
+		op_env.argv = NULL;
+		op_env.lineno += 1;
 	}
-
-	if (len < 0)
-		failure("Error: Can't read file %s\n", argv[1]);
-
-	exit(EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }

@@ -3,9 +3,8 @@
 /**
  * op_pall - print each element on the stack
  * @sp: stack pointer
- * @lineno: line number
  */
-void op_pall(stack_t **sp, unsigned int lineno __attribute__((unused)))
+void op_pall(stack_t **sp)
 {
 	stack_t *p = NULL;
 

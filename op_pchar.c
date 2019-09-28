@@ -3,19 +3,18 @@
 /**
  * op_pchar - print the character at the top of the stack
  * @sp: stack pointer
- * @lineno: line number
  */
-void op_pchar(stack_t **sp, unsigned int lineno)
+void op_pchar(stack_t **sp)
 {
 	if (*sp)
 	{
 		if ((*sp)->n > 0 && (*sp)->n < 128)
 			printf("%c\n", (*sp)->n);
 		else
-			failure("L%u: can't pchar, value out of range\n", lineno);
+			pfailure("L%u: can't pchar, value out of range\n", op_env.lineno);
 	}
 	else
-		failure("L%u: can't pchar, stack empty\n", lineno);
+		pfailure("L%u: can't pchar, stack empty\n", op_env.lineno);
 
 
 }

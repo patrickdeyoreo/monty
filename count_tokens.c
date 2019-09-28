@@ -1,14 +1,13 @@
-#include "words.h"
+#include "monty.h"
 #include <ctype.h>
 
 /**
- * count_words - count the words in a string
+ * count_tokens - count the words in a string
  * @str: the string to evaluate
  *
- * Return: If str is NULL, return -1.
- * Otherwise, return the number of words in str.
+ * Return: Return the number of tokens in str.
  */
-size_t count_words(const char *str)
+size_t count_tokens(const char *str)
 {
 	size_t count = 0;
 

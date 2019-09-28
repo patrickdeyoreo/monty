@@ -3,19 +3,18 @@
 /**
  * op_push - push an element onto the stack
  * @sp: stack pointer
- * @lineno: line number
  */
-void op_push(stack_t **sp, unsigned int lineno)
+void op_push(stack_t **sp)
 {
 	stack_t *new = NULL;
 	const char *nstr = op_env.argv[1];
 
 	if (!(nstr && isinteger(nstr)))
-		failure("L%u: usage: push integer\n", lineno);
+		pfailure("L%u: usage: push integer\n", op_env.lineno);
 
 	new = malloc(sizeof(*new));
 	if (!new)
-		failure("Error: malloc failed\n");
+		pfailure("Error: malloc failed\n");
 
 	new->n = atoi(nstr);
 	if (*sp)

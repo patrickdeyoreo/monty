@@ -4,9 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "getln.h"
-#include "words.h"
-
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -23,12 +20,12 @@ typedef struct stack_s
 	struct stack_s *next;
 } stack_t;
 
-typedef void (*instruction_fn)(stack_t **, unsigned int);
+typedef void (*instruction_fn)(stack_t **);
 
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
- * @f: function to handle the opcode
+ * @fn: function to handle the opcode
  *
  * Description: opcode and its function
  * for stack, queues, LIFO, FIFO Holberton project
@@ -36,7 +33,7 @@ typedef void (*instruction_fn)(stack_t **, unsigned int);
 typedef struct instruction_s
 {
 	char *opcode;
-	instruction_fn f;
+	instruction_fn fn;
 } instruction_t;
 
 /**
@@ -55,15 +52,17 @@ typedef enum stack_mode_n
  * @argv: argument vector
  * @stack: top of stack
  * @line: line buffer
- * @linesz: line size
- * @mode: stack mode
+ * @linesz: line buffer size
+ * @lineno: line number
+ * @mode: stack operation mode
  */
 typedef struct op_env_s
 {
+	stack_t *sp;
 	char **argv;
-	stack_t *stack;
 	char *line;
 	size_t linesz;
+	size_t lineno;
 	stack_mode_t mode;
 } op_env_t;
 
@@ -71,29 +70,31 @@ extern op_env_t op_env;
 
 instruction_fn get_instruction_fn(const char *opcode);
 
-void op_add(stack_t **sp, unsigned int lineno);
-void op_div(stack_t **sp, unsigned int lineno);
-void op_mod(stack_t **sp, unsigned int lineno);
-void op_mul(stack_t **sp, unsigned int lineno);
-void op_nop(stack_t **sp, unsigned int lineno);
-void op_pall(stack_t **sp, unsigned int lineno);
-void op_pchar(stack_t **sp, unsigned int lineno);
-void op_pint(stack_t **sp, unsigned int lineno);
-void op_pop(stack_t **sp, unsigned int lineno);
-void op_pstr(stack_t **sp, unsigned int lineno);
-void op_push(stack_t **sp, unsigned int lineno);
-void op_queue(stack_t **sp, unsigned int lineno);
-void op_rotl(stack_t **sp, unsigned int lineno);
-void op_rotr(stack_t **sp, unsigned int lineno);
-void op_stack(stack_t **sp, unsigned int lineno);
-void op_sub(stack_t **sp, unsigned int lineno);
-void op_swap(stack_t **sp, unsigned int lineno);
+void op_add(stack_t **sp);
+void op_div(stack_t **sp);
+void op_mod(stack_t **sp);
+void op_mul(stack_t **sp);
+void op_nop(stack_t **sp);
+void op_pall(stack_t **sp);
+void op_pchar(stack_t **sp);
+void op_pint(stack_t **sp);
+void op_pop(stack_t **sp);
+void op_pstr(stack_t **sp);
+void op_push(stack_t **sp);
+void op_queue(stack_t **sp);
+void op_rotl(stack_t **sp);
+void op_rotr(stack_t **sp);
+void op_stack(stack_t **sp);
+void op_sub(stack_t **sp);
+void op_swap(stack_t **sp);
 
-void free_stack(stack_t **sp);
+char **tokenize(char *str);
+size_t count_tokens(const char *str);
 
 void free_op_env(void);
+void free_stack(stack_t **sp);
 
-void failure(const char *fmt, ...);
+void pfailure(const char *fmt, ...);
 
 int isinteger(const char *str);
 

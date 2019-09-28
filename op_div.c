@@ -3,20 +3,19 @@
 /**
  * op_div - div the top two elements on the stack
  * @sp: stack pointer
- * @lineno: line number
  */
-void op_div(stack_t **sp, unsigned int lineno)
+void op_div(stack_t **sp)
 {
 	int to_div = 0;
 
 	if (!(*sp && *sp != (*sp)->next))
-		failure("L%u: can't div, stack too short\n", lineno);
+		pfailure("L%u: can't div, stack too short\n", op_env.lineno);
 
 	to_div = (*sp)->n;
 	if (!to_div)
-		failure("L%u: division by zero\n", lineno);
+		pfailure("L%u: division by zero\n", op_env.lineno);
 
-	op_pop(sp, lineno);
+	op_pop(sp);
 
 	(*sp)->n /= to_div;
 }
