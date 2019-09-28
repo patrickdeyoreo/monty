@@ -49,8 +49,8 @@ typedef enum stack_mode_n
 
 /**
  * struct op_env_s - operation environment
+ * @sp: top of the stack
  * @argv: argument vector
- * @stack: top of stack
  * @line: line buffer
  * @linesz: line buffer size
  * @lineno: line number
